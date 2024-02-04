@@ -30,6 +30,8 @@ const category_icon = {
   Imports: 'boxes',
   Vehicles: 'road',
   Factory: 'industry',
+  Martian: 'parachute-box',
+  Syndicate: 'parachute-box',
   'Pending Order': 'shopping-cart',
 };
 

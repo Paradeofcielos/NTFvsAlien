@@ -3,8 +3,8 @@
 //NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory"))
-
+GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory", "Martian", "Syndicate"))
+GLOBAL_LIST_INIT(ntc_supply_groups, list("Operations", "Weapons", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory"))
 /datum/supply_packs
 	var/name
 	var/notes
@@ -2290,3 +2290,27 @@ FACTORY
 	name = "Zeus orbital drop pod assembly refill"
 	contains = list(/obj/item/factory_refill/drop_pod_refill)
 	cost = 230
+
+/*******************************************************************************
+ANTAG EXCLUSIVES - SOM
+*******************************************************************************/
+
+/datum/supply_packs/som
+	group = "Martian"
+	containertype = /obj/structure/closet/crate
+
+/datum/supply_packs/som/test
+	name = "PLACEHOLDER"
+	contains = list(/obj/item/factory_refill/drop_pod_refill)
+	cost = 230
+
+/*******************************************************************************
+ANTAG EXCLUSIVES - SOM
+*******************************************************************************/
+
+/datum/supply_packs/syndie
+	group = "Syndicate"
+	containertype = /obj/structure/closet/crate
+
+/datum/supply_packs/syndie/test
+	name = "PLACEHOLDER"
