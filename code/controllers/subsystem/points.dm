@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(points)
 
 	var/list/supply_packs = list()
 	var/list/supply_packs_ui = list()
+	var/list/supply_packs_som_ui = list() // shitcode workaround
 	var/list/supply_packs_contents = list()
 	///Assoc list of item ready to be sent, categorised by faction
 	var/list/shoppinglist = list()
@@ -37,6 +38,7 @@ SUBSYSTEM_DEF(points)
 	ordernum = SSpoints.ordernum
 	supply_packs = SSpoints.supply_packs
 	supply_packs_ui = SSpoints.supply_packs_ui
+	supply_packs_som_ui = SSpoints.supply_packs_som_ui // Modified code!
 	supply_packs_contents = SSpoints.supply_packs_contents
 	shoppinglist = SSpoints.shoppinglist
 	shopping_history = SSpoints.shopping_history
@@ -58,6 +60,8 @@ SUBSYSTEM_DEF(points)
 		if(!initial(P.cost))
 			continue
 		if(is_human_req_only && initial(P.available_against_xeno_only))
+			continue
+		if(!initial(P.ntfpack))
 			continue
 		P = new pack()
 		if(!P.contains)

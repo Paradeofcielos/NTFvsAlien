@@ -17,6 +17,7 @@ GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Explosives", 
 	var/randomised_num_contained = 0
 	///If this supply pack should be buyable in HvH gamemode
 	var/available_against_xeno_only = FALSE
+	var/ntfpack = TRUE
 
 /datum/supply_packs/proc/generate(atom/movable/location)
 	for(var/i in contains)

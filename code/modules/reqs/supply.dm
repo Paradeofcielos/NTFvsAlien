@@ -337,11 +337,18 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		ui.open()
 
 /datum/supply_ui/ui_static_data(mob/user)
-	. = list()
-	.["categories"] = GLOB.all_supply_groups
-	.["supplypacks"] = SSpoints.supply_packs_ui
-	.["supplypackscontents"] = SSpoints.supply_packs_contents
-	.["elevator_size"] = supply_shuttle?.return_number_of_turfs()
+	if(home_id == "supply_som" || "supply_clf")
+		. = list()
+		.["categories"] = GLOB.all_supply_groups
+		.["supplypacks"] = SSpoints.supply_packs_ui
+		.["supplypackscontents"] = SSpoints.supply_packs_contents
+		.["elevator_size"] = supply_shuttle?.return_number_of_turfs()
+	else
+		. = list()
+		.["categories"] = GLOB.all_supply_groups
+		.["supplypacks"] = SSpoints.supply_packs_som_ui
+		.["supplypackscontents"] = SSpoints.supply_packs_contents
+		.["elevator_size"] = supply_shuttle?.return_number_of_turfs()
 
 /datum/supply_ui/ui_data(mob/living/user)
 	. = list()
@@ -534,10 +541,16 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 // yes these are copy pasted from above because SPEEEEEEEEEEEEED
 /datum/supply_ui/requests/ui_static_data(mob/user)
-	. = list()
-	.["categories"] = GLOB.all_supply_groups
-	.["supplypacks"] = SSpoints.supply_packs_ui
-	.["supplypackscontents"] = SSpoints.supply_packs_contents
+	if(home_id == "supply_som" || "supply_clf")
+		. = list()
+		.["categories"] = GLOB.all_supply_groups
+		.["supplypacks"] = SSpoints.supply_packs_ui
+		.["supplypackscontents"] = SSpoints.supply_packs_contents
+	else
+		. = list()
+		.["categories"] = GLOB.all_supply_groups
+		.["supplypacks"] = SSpoints.supply_packs_som_ui
+		.["supplypackscontents"] = SSpoints.supply_packs_contents
 
 /datum/supply_ui/requests/ui_data(mob/living/user)
 	. = list()
