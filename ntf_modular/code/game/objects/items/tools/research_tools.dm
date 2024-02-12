@@ -1,3 +1,5 @@
+#define RESEARCH_DELAY 2 SECONDS
+
 /obj/item/tool/research/xeno_probe
 	name = "xenomorph analyzer"
 	desc = "A tool for analyzing xenomorphs for research material. Just click on a xenomorph. Can be used to befriend Newt."
@@ -22,7 +24,7 @@
 		),
 	)
 
-/obj/item/tool/research/xeno_analyzer/attack(mob/living/M, mob/living/user)
+/obj/item/tool/research/xeno_probe/attack(mob/living/M, mob/living/user)
 	if(!isxeno(M))
 		return ..()
 
