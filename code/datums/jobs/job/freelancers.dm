@@ -6,7 +6,6 @@
 	faction = FACTION_FREELANCERS
 	minimap_icon = "freelancer"
 	outfit = /datum/outfit/job/freelancer
-	shadow_languages = list(/datum/language/moth)
 
 //What all freelancers have shared in between them
 /datum/outfit/job/freelancer

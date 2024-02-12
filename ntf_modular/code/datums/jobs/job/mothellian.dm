@@ -5,7 +5,8 @@
 	skills_type = /datum/skills/crafty
 	faction = FACTION_MOTHELLIAN
 	minimap_icon = "freelancer"
-	outfit = /datum/outfit/job/freelancer
+	outfit = /datum/outfit/job/mothellian
+	shadow_languages = list(/datum/language/moth)
 
 //What all freelancers have shared in between them
 /datum/outfit/job/mothellian
@@ -20,11 +21,11 @@
 	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian
 	shoes = /obj/item/clothing/shoes/marine
 	gloves = /obj/item/clothing/gloves/marine/veteran/pmc
-	head = /obj/item/clothing/head/frelancer/mothellian
+	head = /obj/item/clothing/head/frelancer/mothellian/base
 	back = /obj/item/storage/backpack/lightpack
 	l_store = /obj/item/storage/pouch/medkit/firstaid
 
-/datum/outfit/job/freelancer/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/mothellian/post_equip(mob/living/carbon/human/H, visualsOnly)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/m15, SLOT_IN_SUIT)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/m15, SLOT_IN_SUIT)
 
@@ -38,9 +39,9 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_containers/food/drinks/flask/marine, SLOT_IN_BACKPACK)
 
 //Freelancer Standard
-/datum/job/freelancer/mothellian
+/datum/job/mothellian/standard
 	title = "Mothellian Standard"
-	paygrade = "FRE1"
+	paygrade = "MTH1"
 	outfit = /datum/outfit/job/mothellian/standard
 	multiple_outfits = TRUE
 	outfits = list(
@@ -140,18 +141,19 @@
 //Mothellian Medic
 /datum/job/mothellian/medic
 	title = "Mothellian Medic"
-	paygrade = "FRE2"
+	paygrade = "MTH2"
 	skills_type = /datum/skills/combat_medic
 	outfit = /datum/outfit/job/mothellian/medic
 
 /datum/outfit/job/mothellian/medic
 	name = "Mothellian Medic"
-	jobtype = /datum/job/freelancer/medic
+	jobtype = /datum/job/mothellian/medic
 
 	belt = /obj/item/storage/belt/lifesaver/full
-	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/medic
+	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/unique/medic
 	glasses = /obj/item/clothing/glasses/hud/health
 	suit_store = /obj/item/weapon/gun/rifle/famas/freelancermedic
+	head = /obj/item/clothing/head/frelancer/mothellian/medic
 	r_store = /obj/item/storage/pouch/medical_injectors/medic
 	l_store = /obj/item/storage/pouch/magazine/large
 
@@ -169,10 +171,48 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/famas, SLOT_IN_L_POUCH)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/famas, SLOT_IN_L_POUCH)
 
+//Mothellian engineer
+/datum/job/mothellian/engi
+	title = "Mothellian Technician"
+	paygrade = "MTH3"
+	skills_type = /datum/skills/combat_engineer
+	outfit = /datum/outfit/job/mothellian/engi
+
+/datum/outfit/job/mothellian/engi
+	name = "Mothellian Technician"
+	jobtype = /datum/job/mothellian/engi
+
+	glasses = /obj/item/clothing/glasses/meson
+	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/unique/engi
+	suit_store = /obj/item/storage/holster/belt/ts34/full
+	head = /obj/item/clothing/head/frelancer/mothellian/engineer
+	r_store = /obj/item/storage/pouch/electronics/full
+	l_store = /obj/item/storage/pouch/construction/equippedengineer
+	back = /obj/item/storage/backpack/marine/engineerpack
+	belt = /obj/item/storage/belt/utility/full
+
+
+/datum/outfit/job/mothellian/engi/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	H.equip_to_slot_or_del(new /obj/item/deployable_floodlight, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/buckshot, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/buckshot, SLOT_IN_BACKPACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/g22, SLOT_IN_BACKPACK)
+
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, SLOT_IN_HEAD)
+
+	H.equip_to_slot_or_del(new /obj/item/circuitboard/apc, SLOT_IN_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/cell/high, SLOT_IN_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/medium_stack, SLOT_IN_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, SLOT_IN_SUIT)
+	H.equip_to_slot_or_del(new /obj/item/stack/barbed_wire/half_stack, SLOT_IN_SUIT)
+
+
 //Mothellian Veteran. Generic term for 'better equipped dude'
 /datum/job/mothellian/grenadier
 	title = "Mothellian Veteran"
-	paygrade = "FRE3"
+	paygrade = "MTH4"
 	outfit = /datum/outfit/job/mothellian/grenadier
 	multiple_outfits = TRUE
 	outfits = list(
@@ -185,12 +225,14 @@
 	name = "Mothellian Veteran"
 	jobtype = /datum/job/mothellian/grenadier
 
+	head = /obj/item/clothing/head/frelancer/mothellian/veteran
+
 /datum/outfit/job/mothellian/grenadier/one
 	w_uniform = /obj/item/clothing/under/marine/veteran/freelancer/mothellian/veteran
 	suit_store = /obj/item/weapon/gun/rifle/alf_machinecarbine/freelancer
 	r_store = /obj/item/storage/pouch/grenade
 
-/datum/outfit/job/freelancer/grenadier/one/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mothellian/grenadier/one/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/alf_machinecarbine, SLOT_IN_BELT)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/alf_machinecarbine, SLOT_IN_BELT)
@@ -271,7 +313,7 @@
 //Mothellian Leader
 /datum/job/mothellian/leader
 	title = "Mothellian Leader"
-	paygrade = "FRE4"
+	paygrade = "MTH5"
 	skills_type = /datum/skills/sl
 	outfit = /datum/outfit/job/mothellian/leader
 	multiple_outfits = TRUE
@@ -296,7 +338,7 @@
 
 /datum/outfit/job/mothellian/leader/one
 	belt = /obj/item/storage/belt/grenade/b17
-	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/leader
+	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/unique/leader
 	suit_store = /obj/item/weapon/gun/rifle/m16/freelancer
 	r_store = /obj/item/storage/pouch/shotgun
 
@@ -316,7 +358,7 @@
 ///tx11
 /datum/outfit/job/mothellian/leader/two
 	belt = /obj/item/belt_harness/marine
-	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/leader/two
+	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/unique/leader/two
 	suit_store = /obj/item/weapon/gun/rifle/tx11/freelancertwo
 	r_store = /obj/item/storage/pouch/grenade
 
@@ -337,7 +379,7 @@
 
 ///tx55
 /datum/outfit/job/mothellian/leader/three
-	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/leader/three
+	wear_suit = /obj/item/clothing/suit/storage/faction/freelancer/mothellian/unique/leader/three
 	suit_store = /obj/item/weapon/gun/rifle/tx55/freelancer
 	r_store = /obj/item/storage/pouch/magazine/large
 
